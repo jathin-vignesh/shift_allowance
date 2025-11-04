@@ -1,0 +1,15 @@
+fastapi==0.116.2
+uvicorn==0.38.0
+sqlalchemy==2.0.44
+pydantic==2.8.2
+alembic==1.13.2
+python-dotenv==1.0.1
+psycopg2-binary==2.9.11
+jose==1.0.0
+pandas==2.2.3
+openpyxl==3.1.5
+pytest==8.3.3
+dotenv
+bcrypt==5.0.0
+passlib==1.7.4
+pydantic[email]==2.3.0
