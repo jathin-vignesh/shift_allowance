@@ -8,7 +8,7 @@ def create_shift(db: Session, data: ShiftAllowanceCreate):
     existing = db.query(ShiftAllowance).filter(ShiftAllowance.emp_id == data.emp_id).first()
     if existing:
         raise HTTPException(status_code=400, detail="Employee ID already exists")
-    new_entry = ShiftAllowance(**data.dict())
+    new_entry = ShiftAllowance(**data.model_dump())
     db.add(new_entry)
     db.commit()
     db.refresh(new_entry)
@@ -37,7 +37,7 @@ def update_shift(db: Session, id: int, data: ShiftAllowanceUpdate):
     entry = db.query(ShiftAllowance).filter(ShiftAllowance.id == id).first()
     if not entry:
         raise HTTPException(status_code=404, detail="Record not found")
-    update_data = data.dict(exclude_unset=True)
+    update_data = data.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         setattr(entry, field, value)
     db.commit()
